@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mummy.Models;
 using System.Diagnostics;
 
@@ -18,7 +19,8 @@ namespace mummy.Controllers
             return View();
         }
 
-
+        //Makes users sign in before accessing page
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
