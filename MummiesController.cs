@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mummy.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace mummy
 {
@@ -21,9 +23,15 @@ namespace mummy
         // GET: Mummies
         public async Task<IActionResult> Index()
         {
-              return _context.Mummies != null ? 
-                          View(await _context.Mummies.ToListAsync()) :
-                          Problem("Entity set 'intex2Context.Mummies'  is null.");
+
+            var application = _context.Mummies
+                //.Where(x => x.Sex == "M")
+                .ToList();
+
+            //return _context.Mummies != null ? 
+            //            View(await _context.Mummies.ToListAsync()) :
+            //            Problem("Entity set 'intex2Context.Mummies'  is null.");
+            return View(application);
         }
 
         // GET: Mummies/Details/5
