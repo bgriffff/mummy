@@ -18,7 +18,8 @@ namespace mummy.Controllers
         {
             return View();
         }
-       
+
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
@@ -38,15 +39,10 @@ namespace mummy.Controllers
         {
             return View();
         }
-        public IActionResult Unsupervised() 
-
-        //Makes users sign in before accessing page
-        [Authorize]
-        public IActionResult Privacy()
+        public IActionResult Unsupervised()
         {
             return View();
         }
-
 
             //// Use the View method to return the view
             //return View(virtualPath);

@@ -5,7 +5,6 @@ using mummy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container. Use the Environment when pushing to aws
 //var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
