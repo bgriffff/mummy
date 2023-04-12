@@ -74,10 +74,19 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg class="svg-inline--fa fa-user fa-fw" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Identity/Account/Login">Login</a></li>
-                    <li><a class="dropdown-item" href="Identity/Account/Register">Register</a></li>
+                    @* @if (User.Identity.IsAuthenticated && !User.IsInRole("Admin"))
+            {
+                bool isTwoFactorEnabled = await _userManager.GetTwoFactorEnabledAsync(await _userManager.GetUserAsync(User));
+                if (isTwoFactorEnabled && !Context.Request.Path.StartsWithSegments("/Identity/Account/Manage/TwoFactorAuthentication"))
+                {
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/TwoFactorAuthentication">Two-factor Authentication</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                }
+            }*@
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -143,7 +152,8 @@
                 </div>
                 <div class="sb-sidenav-footer p-2">
                     <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                 <br />
+                   <a  class="btn btn-outline-secondary btn-md" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity?.Name</a>
                     <br />
                     <br />
                 </div>
@@ -151,7 +161,9 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-               
+               <div class="d-flex justify-content-center align-items-center bg-body-tertiary">
+                   <div class="col-lg-10 p-lg-3 text-left">
+         
                 @RenderBody()
             </main>
 
