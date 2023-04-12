@@ -18,6 +18,27 @@ namespace mummy.Controllers
         {
             return View();
         }
+       
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult BurialList()
+        {
+            return View();
+        }
+
+        public IActionResult BurialForm()
+        {
+            return View();
+        }
+
+        public IActionResult Supervised()
+        {
+            return View();
+        }
+        public IActionResult Unsupervised() 
 
         //Makes users sign in before accessing page
         [Authorize]
@@ -25,6 +46,18 @@ namespace mummy.Controllers
         {
             return View();
         }
+
+
+            //// Use the View method to return the view
+            //return View(virtualPath);
+
+        ////    return RedirectToPage("//Identity/Account/Login");
+     
+        ////}
+
+        //Edit get and post needed
+
+        //delete get and post needed
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
