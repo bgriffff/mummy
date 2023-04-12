@@ -801,9 +801,11 @@ namespace mummy.Models
 
             modelBuilder.Entity<Mummy>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("mummy");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .UseIdentityAlwaysColumn();
 
                 entity.Property(e => e.AgeAtDeath)
                     .HasMaxLength(200)

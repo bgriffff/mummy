@@ -1,0 +1,101 @@
+﻿@model IEnumerable<mummy.Models.Mummy>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HeadDirection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HairColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BurialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeAtDeath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StructureValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ColorValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TextileValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FieldNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HeadDirection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HairColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BurialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeAtDeath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StructureValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ColorValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TextileValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                    <img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Mummies" style="height:128px;">
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

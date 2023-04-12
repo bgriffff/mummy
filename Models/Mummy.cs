@@ -17,5 +17,6 @@ namespace mummy.Models
         public string? FieldNotes { get; set; }
         public string? Length { get; set; }
         public string? Photo { get; set; }
+        public long Id { get; set; }
     }
 }
