@@ -8,6 +8,7 @@ using mummy.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//Database for Passwords and such
 //var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -25,6 +26,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //    postgresConnectionString = response.Parameter.Value;
 //}
 
+//Database for Mummies Info
+//var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
 var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
 builder.Services.AddDbContext<intex2Context>(opt =>
         opt.UseNpgsql(postgresConnectionString));

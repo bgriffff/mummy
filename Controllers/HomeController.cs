@@ -25,10 +25,10 @@ namespace mummy.Controllers
             return View();
         }
 
-        public IActionResult BurialList()
-        {
-            return View();
-        }
+        //public IActionResult BurialList()
+        //{
+        //    return View();
+        //}
 
         public IActionResult BurialForm()
         {

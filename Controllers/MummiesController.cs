@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using mummy.Models;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace mummy
+namespace mummy.Controllers
 {
     public class MummiesController : Controller
     {
@@ -157,14 +157,14 @@ namespace mummy
             {
                 _context.Mummies.Remove(mummy);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MummyExists(long id)
         {
-          return (_context.Mummies?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Mummies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
