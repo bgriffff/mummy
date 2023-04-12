@@ -63,9 +63,9 @@
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Fag el Gamous</a>
+        <a class="navbar-brand ps-3" asp-controller="Home" asp-action="Index">Fag el Gamous</a>
         <!-- Sidebar Toggle-->
-        <button id="sidebarToggle" class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"><i class="fas fa-bars"></i></button>
+        <button id="sidebarToggle" class="btn btn-link btn-lg order-1 order-lg-0 me-4 me-lg-0"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </form>
@@ -74,8 +74,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg class="svg-inline--fa fa-user fa-fw" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Login</a></li>
-                    <li><a class="dropdown-item" href="#!">Register</a></li>
+                    <li><a class="dropdown-item" href="Identity/Account/Login">Login</a></li>
+                    <li><a class="dropdown-item" href="Identity/Account/Register">Register</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#!">Logout</a></li>
                 </ul>
@@ -91,49 +91,49 @@
                     <div class="nav">
                         <!--This group of tags is for the Home portion of the sidebar-->
                         <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Home
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <div class="sb-nav-link-icon-sm"><i class="fas fa-tachometer-alt"></i>&nbsp;</div>
+                                Home
                         </a>
 
-                        <!--This group of tags is for the Burial Data Add and view portion of the sidebar-->
+                       <!--This group of tags is for the Burial Data Add and view portion of the sidebar-->
                         <!-- <div class="sb-sidenav-menu-heading">Burial Data</div> -->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBurial" aria-expanded="false" aria-controls="collapseBurial">
+                            <div class="sb-nav-link-icon-sm"><i class="fas fa-columns"></i>&nbsp;</div>
                             Burial Data
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseBurial" aria-labelledby="headingBurial" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">View the Burial Data</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Add a Burial Plot</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="BurialList">View the Burial Data</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="BurialForm">Add a Burial Plot</a>
                             </nav>
                         </div>
 
 
-                        <!--This group of tags is for the Analytics portion of the sidebar-->
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                       <!--This group of tags is for the Analytics portion of the sidebar-->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAnalytics" aria-expanded="false" aria-controls="collapseAnalytics">
+                            <div class="sb-nav-link-icon-sm"><i class="fas fa-columns"></i>&nbsp;</div>
                             Analytics
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseAnalytics" aria-labelledby="headingAnalytics" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Supervised Analytics</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Unsupervised Analytics</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Supervised">Supervised Analytics</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Unsupervised">Unsupervised Analytics</a>
                             </nav>
                         </div>
 
                         <!--This group of tags is for the Administration portion of the sidebar-->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            <div class="sb-nav-link-icon-sm"><i class="fas fa-columns"></i>&nbsp;</div>
                             Administration
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="layout-static.html">User Accounts</a>
-                                <a class="nav-link" href="layout-static.html">Privacy</a>
+                                <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </nav>
                         </div>
 
@@ -151,17 +151,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="position-relative overflow-hidden text-center bg-body-tertiary">
-                    <div class="col-md-5 p-lg-5 mx-auto my-5">
-                        <h1 class="display-4 fw-normal">Fag el-Gamous</h1>
-                        <p class="lead fw-normal">"The Way of the Water Buffalo"</p>
-                        <a class="btn btn-outline-secondary btn-lg" href="#">Log In</a>
-                        <br />
-                        <a class="btn-link btn-sm" href="#">Sign Up</a>
-                    </div>
-                    <div class="product-device shadow-sm d-none d-md-block"></div>
-                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-                </div>
+               
                 @RenderBody()
             </main>
 
@@ -173,7 +163,7 @@
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2023</div>
                         <div>
-                            <a href="#">Privacy Policy</a>
+                            <a asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
                             @*&middot;
                             <a href="#">Terms &amp; Conditions</a>*@
                         </div>
