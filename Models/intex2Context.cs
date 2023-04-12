@@ -39,6 +39,7 @@ namespace mummy.Models
         public virtual DbSet<DecorationTextile> DecorationTextiles { get; set; } = null!;
         public virtual DbSet<Dimension> Dimensions { get; set; } = null!;
         public virtual DbSet<DimensionTextile> DimensionTextiles { get; set; } = null!;
+        public virtual DbSet<Mummy> Mummies { get; set; } = null!;
         public virtual DbSet<MummySum> MummySums { get; set; } = null!;
         public virtual DbSet<Newsarticle> Newsarticles { get; set; } = null!;
         public virtual DbSet<PhotodataTextile> PhotodataTextiles { get; set; } = null!;
@@ -796,6 +797,59 @@ namespace mummy.Models
                 entity.Property(e => e.MainDimensionid).HasColumnName("main$dimensionid");
 
                 entity.Property(e => e.MainTextileid).HasColumnName("main$textileid");
+            });
+
+            modelBuilder.Entity<Mummy>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("mummy");
+
+                entity.Property(e => e.AgeAtDeath)
+                    .HasMaxLength(200)
+                    .HasColumnName("age_at_death");
+
+                entity.Property(e => e.BurialNumber)
+                    .HasMaxLength(200)
+                    .HasColumnName("burial_number");
+
+                entity.Property(e => e.ColorValue)
+                    .HasMaxLength(500)
+                    .HasColumnName("color_value");
+
+                entity.Property(e => e.FieldNotes)
+                    .HasMaxLength(2000)
+                    .HasColumnName("field_notes");
+
+                entity.Property(e => e.HairColor)
+                    .HasMaxLength(200)
+                    .HasColumnName("hair_color");
+
+                entity.Property(e => e.HeadDirection)
+                    .HasMaxLength(200)
+                    .HasColumnName("head_direction");
+
+                entity.Property(e => e.Length)
+                    .HasMaxLength(200)
+                    .HasColumnName("length");
+
+                entity.Property(e => e.Location).HasColumnName("location");
+
+                entity.Property(e => e.Photo)
+                    .HasMaxLength(500)
+                    .HasColumnName("photo");
+
+                entity.Property(e => e.Sex)
+                    .HasMaxLength(200)
+                    .HasColumnName("sex");
+
+                entity.Property(e => e.StructureValue)
+                    .HasMaxLength(500)
+                    .HasColumnName("structure_value");
+
+                entity.Property(e => e.TextileValue)
+                    .HasMaxLength(200)
+                    .HasColumnName("textile_value");
             });
 
             modelBuilder.Entity<MummySum>(entity =>
