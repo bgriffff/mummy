@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mummy.Models;
+using mummy.Models.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace mummy.Controllers
@@ -21,19 +23,43 @@ namespace mummy.Controllers
         }
 
         // GET: Mummies
-        public async Task<IActionResult> Index()
+        [Authorize]
+        public async Task<IActionResult> Index(int pageNum = 1)
         {
+            int pageSize = 100;
 
-            var application = _context.Mummies
+            var x = new MummyViewModel
+            {
+                Mummy = _context.Mummies
+                .OrderBy(application => application.Id)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumMummies = _context.Mummies.Count(),
+                    MummiesPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+
+            };
+
+            //var application = _context.Mummies
+            //    .OrderBy(application => application.Id)
+            //    .Skip((pageNum - 1) * pageSize)
+            //    .Take(pageSize)
+            //    .ToList();
                 //.Where(x => x.Sex == "M")
-                .ToList();
+
 
             //return _context.Mummies != null ? 
             //            View(await _context.Mummies.ToListAsync()) :
             //            Problem("Entity set 'intex2Context.Mummies'  is null.");
-            return View(application);
+
+            return View(x);
         }
 
+        [Authorize]
         // GET: Mummies/Details/5
         public async Task<IActionResult> Details(long? id)
         {
@@ -53,6 +79,7 @@ namespace mummy.Controllers
         }
 
         // GET: Mummies/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -63,6 +90,7 @@ namespace mummy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Location,HeadDirection,Sex,HairColor,BurialNumber,AgeAtDeath,StructureValue,ColorValue,TextileValue,FieldNotes,Length,Photo,Id")] Mummy mummy)
         {
             if (ModelState.IsValid)
@@ -75,6 +103,7 @@ namespace mummy.Controllers
         }
 
         // GET: Mummies/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null || _context.Mummies == null)
@@ -95,6 +124,7 @@ namespace mummy.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(long id, [Bind("Location,HeadDirection,Sex,HairColor,BurialNumber,AgeAtDeath,StructureValue,ColorValue,TextileValue,FieldNotes,Length,Photo,Id")] Mummy mummy)
         {
             if (id != mummy.Id)
@@ -126,6 +156,7 @@ namespace mummy.Controllers
         }
 
         // GET: Mummies/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null || _context.Mummies == null)
@@ -146,6 +177,7 @@ namespace mummy.Controllers
         // POST: Mummies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
             if (_context.Mummies == null)

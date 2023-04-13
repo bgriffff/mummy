@@ -27,5 +27,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\lib\img\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Models\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Infrastructure\" />
+    <None Remove="Models\ViewModels\" />
   </ItemGroup>
 </Project>
