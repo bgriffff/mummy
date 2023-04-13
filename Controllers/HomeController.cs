@@ -19,9 +19,20 @@ namespace mummy.Controllers
             return View();
         }
 
-        //Makes users sign in before accessing page
         [Authorize]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Supervised()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Unsupervised()
         {
             return View();
         }
