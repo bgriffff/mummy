@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mummy.Models;
+using mummy.Models.ViewModels;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace mummy.Controllers
@@ -21,17 +24,27 @@ namespace mummy.Controllers
         }
 
         // GET: Mummies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNum = 1)
         {
+            int pageSize = 100;
 
-            var application = _context.Mummies
-                //.Where(x => x.Sex == "M")
-                .ToList();
+            var x = new MummyViewModel
+            {
+                Mummy = _context.Mummies
+                .OrderBy(application => application.Id)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
 
-            //return _context.Mummies != null ? 
-            //            View(await _context.Mummies.ToListAsync()) :
-            //            Problem("Entity set 'intex2Context.Mummies'  is null.");
-            return View(application);
+                PageInfo = new PageInfo
+                {
+                    TotalNumMummies = _context.Mummies.Count(),
+                    MummiesPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+
+            };
+
+            return View(x);
         }
 
         // GET: Mummies/Details/5
@@ -52,6 +65,7 @@ namespace mummy.Controllers
             return View(mummy);
         }
 
+        [Authorize(Roles = "Admin, Researcher")]
         // GET: Mummies/Create
         public IActionResult Create()
         {
@@ -74,6 +88,7 @@ namespace mummy.Controllers
             return View(mummy);
         }
 
+        [Authorize(Roles = "Admin, Researcher")]
         // GET: Mummies/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
@@ -125,6 +140,7 @@ namespace mummy.Controllers
             return View(mummy);
         }
 
+        [Authorize(Roles = "Admin, Researcher")]
         // GET: Mummies/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {

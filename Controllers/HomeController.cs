@@ -19,41 +19,23 @@ namespace mummy.Controllers
             return View();
         }
 
-        [Authorize]
         public IActionResult Privacy()
         {
             return View();
         }
 
-        //public IActionResult BurialList()
-        //{
-        //    return View();
-        //}
-
-        public IActionResult BurialForm()
-        {
-            return View();
-        }
-
+        [Authorize]
         public IActionResult Supervised()
         {
             return View();
         }
+
+        [Authorize]
         public IActionResult Unsupervised()
         {
             return View();
         }
 
-            //// Use the View method to return the view
-            //return View(virtualPath);
-
-        ////    return RedirectToPage("//Identity/Account/Login");
-     
-        ////}
-
-        //Edit get and post needed
-
-        //delete get and post needed
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

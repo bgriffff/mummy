@@ -5,12 +5,13 @@ using mummy.Data;
 using Amazon.SimpleSystemsManagement.Model;
 using Amazon.SimpleSystemsManagement;
 using mummy.Models;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Database for Passwords and such
-//var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -27,24 +28,31 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //}
 
 //Database for Mummies Info
-//var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
-var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
+var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
+//var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
 builder.Services.AddDbContext<intex2Context>(opt =>
         opt.UseNpgsql(postgresConnectionString));
 
-
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddDefaultUI()
+    .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+
+
+//Makes stronger passwords
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 12;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+//Old Users
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+//builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
-//builder.Services.AddRazorPages(options =>
-//{
-//    options.Conventions.AddFolderApplicationModelConvention("/Areas/Identity/Pages/Account", model => {
-//        model.RootDirectory = "/CustomPages";
-//    });
-//});
+
 
 var app = builder.Build();
 
