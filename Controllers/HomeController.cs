@@ -31,12 +31,13 @@ namespace mummy.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin, Researcher")]
         public IActionResult BurialForm()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin, Researcher")]
         public IActionResult Supervised()
         {
             return View();
@@ -47,7 +48,7 @@ namespace mummy.Controllers
         {
             using (var client = new HttpClient())
             {
-                var uri = new Uri("http://localhost:5279/score");
+                var uri = new Uri("https://mummyscurse.win/score");
 
                 var json = JsonConvert.SerializeObject(data);
 
