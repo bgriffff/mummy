@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.ML.OnnxRuntime;
 using mummy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRazorPages();
+//builder.Services.AddRazorPages(options =>
+//{
+//    options.Conventions.AddFolderApplicationModelConvention("/Areas/Identity/Pages/Account", model => {
+//        model.RootDirectory = "/CustomPages";
+//    });
+//});
+
+builder.Services.AddSingleton<InferenceSession>(serviceProvider =>
+        new InferenceSession("~/onnxstuff/mummyburial4.onnx"));
 
 var app = builder.Build();
 

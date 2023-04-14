@@ -1,0 +1,587 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<body>
+    <div>
+        <form>
+
+            
+            <label for="squarenorthsouth">Square NS Coordinates: </label>
+            <input type="number" id="squarenorthsouth" name="squarenorthsouth" value="">Square NS</input>
+            <br />
+
+            <label for="squareeastwest">Square EW Coordinates: </label>
+            <input id="squareeastwest" name="squareeastwest" value="">Square EW</input>
+            <br />
+
+            <label for="northsouth_N">N/S: </label>
+            <select id="northsouth_N" name="northsouth_N">
+            <option id="northsouth_N" name="northsouth_N" value="N">North SN</option>
+            </select>
+
+            <br />
+
+            <label for="Direction">Direction: </label>
+            <select id="Direction" name="Direction">
+                <option id="eastwest_E" name="eastwest_E" value="E">E</option>
+                <option id="eastwest_W" name="eastwest_W" value="W">W</option>
+            </select>
+            <br />
+
+            <label for="Age">Age: </label>
+            <select>
+                <option id="adultsubadult_A" name="adultsubadult_A" value="A">Adult</option>
+                <option id="adultsubadult_C" name="adultsubadult_C" value="C">Child</option>
+                <option id="adultsubadult_U" name="adultsubadult_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <label for="AgeAtDeath">Age At Death: </label>
+            <select id="AgeAtDeath" name="AgeAtDeath">
+                <option id="ageatdeath_A" name="ageatdeath_A" value="A">Adult</option>
+                <option id="ageatdeath_C" name="ageatdeath_C" value="C">Child</option>
+                <option id="ageatdeath_I" name="ageatdeath_I" value="I">Infant: years 1-3</option>
+                <option id="ageatdeath_N" name="ageatdeath_N" value="N">New Born: year 0-1</option>
+                <option id="ageatdeath_U" name="ageatdeath_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <label for="inputData">Thickness: </label>
+            <select id="Thickness" name="Thickness">
+                <option id="thickness_C" name="thickness_C" value="C">Coarse</option>
+                <option id="thickness_F" name="thickness_F" value="F">Fine</option>
+                <option id="thickness_F_M" name="thickness_F_M" value="FM">Fine-Medium</option>
+                <option id="thickness_M" name="thickness_M" value="M">Medium</option>
+                <option id="thickness_VF" name="thickness_VF" value="VF">Very Fine</option>
+                <option id="thickness_U" name="thickness_U" value="U">Unknown</option>
+
+            </select>
+            <br />
+
+            <label for="inputData">Angle: </label>
+            <select id ="Angle" name="Angle">
+                <option id="angle_H" name="angle_H" value="H">High</option>
+                <option id="angle_M" name="angle_M" value="M">Medium</option>
+                <option id="angle_M_H" name="angle_M_H" value="MH">Medium-High</option>
+                <option id="angle_S" name="angle_S" value="S">Soft</option>
+                <option id="angle_S_M" name="angle_S_M" value="SM">Soft-Medium</option>
+                <option id="angle_U" name="angle_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <label for="inputData">Material Manipulation: </label>
+            <select id="MaterialManip" name="MaterialManip">
+                <option id="manipulation_Green_yarns" name="manipulation_Green_yarns" value="GY">Green Yarns</option>
+                <option id="manipulation_Thread_single_stitch" name="manipulation_Thread_single_stitch" value="SS">Thread Single Stitch</option>
+                <option id="manipulation_Warp" name="manipulation_Warp" value="WARP">Warp</option>
+                <option id="manipulation_Weft" name="manipulation_Weft" value="WEFT">Weft</option>
+                <option id="manipulation_Weft_pile_band" name="manipulation_Weft_pile_band" value="WPB">Weft Pile Band</option>
+                <option id="manipulation_Weft_red" name="manipulation_Weft_red" value="WRed">Weft Red</option>
+                <option id="manipulation_Weft_Ribs" name="manipulation_Weft_Ribs" value="WRibs">Weft Ribs</option>
+                <option id="manipulation_Weft_decoration" name="manipulation_Weft_decoration" value="WDecor">Weft Decoration</option>
+            </select>
+            <br />
+
+            <label for="inputData">Material: </label>
+            <select id="Material" name="Material">            
+                <option id="material_Linen" name="material_Linen" value="L">Linen</option>
+                <option id="material_Wool" name="material_Wool" value="W">Wool</option>
+                <option id="material_Other" name="material_Other" value="O">Other</option>
+                <option id="material_U" name="material_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <label for="inputData">Ply: </label>
+            <select id="Ply" name="Ply">
+                <option id="ply_S" name="ply_S" value="S">Single</option>
+                <option id="ply_D" name="ply_D" value="D">Double</option>
+                <option id="ply_U" name="ply_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <label for="inputData">Yarn Manipulation: </label>
+            <select id="YarnManip" name="YarnManip">
+                <option id="yarnmanipulation_direction_S" name="yarnmanipulation_direction_S" value="S">S Twist</option>
+                <option id="yarnmanipulation_direction_Z" name="yarnmanipulation_direction_Z" value="Z">Z Twist</option>
+                <option id="yarnmanipulation_direction_Z_S" name="yarnmanipulation_direction_Z_S" value="ZS">Z & S Twist</option>
+                <option id="yarnmanipulation_direction_U" name="yarnmanipulation_direction_U" value="U">Unknown</option>
+            </select>
+            <br />
+
+            <button id="custom-button">Submit</button>
+            
+
+             
+                <h4>Prediction:</h4>
+                <h4 id="predictionResult"></h4>
+        </form>
+
+
+    </div>
+    <script>
+
+        const customButton = document.getElementById('custom-button');
+            customButton.addEventListener('click', function (event) {
+            event.preventDefault();
+
+                //define the input data
+                const inputData = {
+                    "squarenorthsouth": squarenorthsouth,
+                    "squareeastwest": squareeastwest,
+                    "northsouth_N": northsouth_N,
+                    "eastwest_E": eastwest_E,
+                    "eastwest_W": eastwest_W,
+                    "adultsubadult_A": adultsubadult_A,
+                    "adultsubadult_C": adultsubadult_C,
+                    "adultsubadult_U": adultsubadult_U,
+                    "ageatdeath_A": ageatdeath_A,
+                    "ageatdeath_C": ageatdeath_C,
+                    "ageatdeath_I": ageatdeath_I,
+                    "ageatdeath_N": ageatdeath_N,
+                    "ageatdeath_U": ageatdeath_U,
+                    "thickness_C": thickness_C,
+                    "thickness_F": thickness_F,
+                    "thickness_F_M": thickness_F_M,
+                    "thickness_M": thickness_M,
+                    "thickness_U": thickness_U,
+                    "thickness_VF": thickness_VF,
+                    "angle_H": angle_H,
+                    "angle_M": angle_M,
+                    "angle_M_H": angle_M_H,
+                    "angle_S": angle_S,
+                    "angle_S_M": angle_S_M,
+                    "angle_U": angle_U,
+                    "manipulation_Green_yarns": manipulation_Green_yarns,
+                    "manipulation_Thread_single_stitch": manipulation_Thread_single_stitch,
+                    "manipulation_Warp": manipulation_Warp,
+                    "manipulation_Weft": manipulation_Weft,
+                    "manipulation_Weft_pile_band": manipulation_Weft_pile_band,
+                    "manipulation_Weft_red": manipulation_Weft_red,
+                    "manipulation_Weft_Ribs": manipulation_Weft_Ribs,
+                    "manipulation_Weft_decoration": manipulation_Weft_decoration,
+                    "material_Linen": material_Linen,
+                    "material_Other": material_Other,
+                    "material_U": material_U,
+                    "material_Wool": material_Wool,
+                    "ply_D": ply_D,
+                    "ply_S": ply_S,
+                    "ply_U": ply_U,
+                    "yarnmanipulation_direction_S": yarnmanipulation_direction_S,
+                    "yarnmanipulation_direction_U": yarnmanipulation_direction_U,
+                    "yarnmanipulation_direction_Z": yarnmanipulation_direction_Z,
+                    "yarnmanipulation_direction_Z_S": yarnmanipulation_direction_Z_S
+                }
+
+
+            function updateInputData() {
+                const squarenorthsouth = document.querySelector("#squarenorthsouth");
+                inputData.squarenorthsouth = parseFloat(squarenorthsouth.value);
+                const squareeastwest = document.querySelector('#squareeastwest');
+                inputData.squareeastwest = parseFloat(squareeastwest.value);
+
+                // NORTH SOUTH NORTH 
+         
+                if (northsouth_N === 'N') {
+                    inputData.northsouth_N = 1;
+                }
+
+                // DIRECTION
+                if (Direction === 'E') {
+                    inputData.eastwest_E = 1;
+                    inputData.eastwest_W = 0;        
+                }
+                else if (Direction === "W") {
+                    inputData.headdirection_E = 0;
+                    inputData.headdirection_W = 1;
+                }
+
+                //AGE
+                if (Age === 'A') {
+                    inputData.adultsubadult_A = 1;
+                    inputData.adultsubadult_C = 0;
+                    inputData.adultsubadult_U = 0;
+                }
+                else if (Age === "C") {
+                    inputData.adultsubadult_A = 0;
+                    inputData.adultsubadult_C = 1;
+                    inputData.adultsubadult_U = 0;
+                }
+                else if (Age === "U") {
+                    inputData.adultsubadult_A = 0;
+                    inputData.adultsubadult_C = 0;
+                    inputData.adultsubadult_U = 1;
+                }
+
+                //AGE AT DEATH
+                if (AgeAtDeath === 'A') {
+                    inputData.ageatdeath_A = 1;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "C") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 1;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "I") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 1;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "N") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 1;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "U") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 1;
+                }
+
+                //THICKNESS
+                if (AgeAtDeath === 'C') {
+                    inputData.thickness_C = 1;
+                    inputData.thickness_F = 0;
+                    inputData.thickness_F_M = 0;
+                    inputData.thickness_M = 0;
+                    inputData.thickness_VF = 0;
+                    inputData.thickness_U = 0;
+                }
+                else if (AgeAtDeath === "F") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 1;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "FM") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 1;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "M") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 1;
+                    inputData.ageatdeath_U = 0;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "VF") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 1;
+                    inputData.ageatdeath_U = 0;
+                }
+                else if (AgeAtDeath === "U") {
+                    inputData.ageatdeath_A = 0;
+                    inputData.ageatdeath_C = 0;
+                    inputData.ageatdeath_I = 0;
+                    inputData.ageatdeath_N = 0;
+                    inputData.ageatdeath_U = 1;
+                    inputData.ageatdeath_U = 0;
+                }
+
+                // ANGLE
+                if (Angle === 'H') {
+                    inputData.angle_H = 1;
+                    inputData.angle_M = 0;
+                    inputData.angle_M_H = 0;
+                    inputData.angle_S = 0;
+                    inputData.angle_S_M = 0;
+                    inputData.angle_U = 0;
+                }
+                else if (Angle === "M") {
+                    inputData.angle_H = 0;
+                    inputData.angle_M = 1;
+                    inputData.angle_M_H = 0;
+                    inputData.angle_S = 0;
+                    inputData.angle_S_M = 0;
+                    inputData.angle_U = 0;
+                }
+                else if (Angle === "HM") {
+                    inputData.angle_H = 0;
+                    inputData.angle_M = 0;
+                    inputData.angle_M_H = 1;
+                    inputData.angle_S = 0;
+                    inputData.angle_S_M = 0;
+                    inputData.angle_U = 0;
+                }
+                else if (Angle === "S") {
+                    inputData.angle_H = 0;
+                    inputData.angle_M = 0;
+                    inputData.angle_M_H = 0;
+                    inputData.angle_S = 1;
+                    inputData.angle_S_M = 0;
+                    inputData.angle_U = 0;
+                }
+                else if (Angle === "SM") {
+                    inputData.angle_H = 0;
+                    inputData.angle_M = 0;
+                    inputData.angle_M_H = 0;
+                    inputData.angle_S = 0;
+                    inputData.angle_S_M = 1;
+                    inputData.angle_U = 0;
+                }
+                else if (Angle === "U") {
+                    inputData.angle_H = 0;
+                    inputData.angle_M = 0;
+                    inputData.angle_M_H = 0;
+                    inputData.angle_S = 0;
+                    inputData.angle_S_M = 0;
+                    inputData.angle_U = 1;
+                }
+
+                // MATERIAL MANIPULATION 
+                if (MaterialManip === 'GY') {
+                    inputData.manipulation_Green_yarns = 1;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "SS") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 1;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WARP") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 1;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WEFT") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 1;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WPB") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 1;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WRed") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 1;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WRibs") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 1;
+                    inputData.manipulation_Weft_decoration = 0;
+                }
+                else if (MaterialManip === "WDecor") {
+                    inputData.manipulation_Green_yarns = 0;
+                    inputData.manipulation_Thread_single_stitch = 0;
+                    inputData.manipulation_Warp = 0;
+                    inputData.manipulation_Weft = 0;
+                    inputData.manipulation_Weft_pile_band = 0;
+                    inputData.manipulation_Weft_red = 0;
+                    inputData.manipulation_Weft_Ribs = 0;
+                    inputData.manipulation_Weft_decoration = 1;
+                }
+
+                // MATERIAL 
+                if (Material === 'L') {
+                    inputData.material_Linen = 1;
+                    inputData.material_Wool = 0;
+                    inputData.material_Other = 0;
+                    inputData.material_U = 0;
+                }
+                else if (Material === "W") {
+                    inputData.material_Linen = 0;
+                    inputData.material_Wool = 1;
+                    inputData.material_Other = 0;
+                    inputData.material_U = 0;
+                }
+                else if (Material === "O") {
+                    inputData.material_Linen = 0;
+                    inputData.material_Wool = 0;
+                    inputData.material_Other = 1;
+                    inputData.material_U = 0;
+                }
+                else if (Material === "U") {
+                    inputData.material_Linen = 0;
+                    inputData.material_Wool = 0;
+                    inputData.material_Other = 0;
+                    inputData.material_U = 1;
+                }
+
+                // PLY
+                if (Ply === 'S') {
+                    inputData.ply_S = 1;
+                    inputData.ply_D = 0;
+                    inputData.ply_U = 0;
+                }
+                else if (Ply === "D") {
+                    inputData.ply_S = 0;
+                    inputData.ply_D = 1;
+                    inputData.ply_U = 0;
+                }
+                else if (Ply === "U") {
+                    inputData.ply_S = 0;
+                    inputData.ply_D = 0;
+                    inputData.ply_U = 1;
+                }
+
+
+                // YARN MANIPULATION 
+                if (YarnManip === 'S') {
+                    inputData.yarnmanipulation_direction_S = 1;
+                    inputData.yarnmanipulation_direction_Z = 0;
+                    inputData.yarnmanipulation_direction_Z_S = 0;
+                    inputData.yarnmanipulation_direction_U = 0;
+                }
+                else if (YarnManip === "Z") {
+                    inputData.yarnmanipulation_direction_S = 0;
+                    inputData.yarnmanipulation_direction_Z = 1;
+                    inputData.yarnmanipulation_direction_Z_S = 0;
+                    inputData.yarnmanipulation_direction_U = 0;
+                }
+                else if (YarnManip === "ZS") {
+                    inputData.yarnmanipulation_direction_S = 0;
+                    inputData.yarnmanipulation_direction_Z = 0;
+                    inputData.yarnmanipulation_direction_Z_S = 1;
+                    inputData.yarnmanipulation_direction_U = 0;
+                }
+                else if (YarnManip === "U") {
+                    inputData.yarnmanipulation_direction_S = 0;
+                    inputData.yarnmanipulation_direction_Z = 0;
+                    inputData.yarnmanipulation_direction_Z_S = 0;
+                    inputData.yarnmanipulation_direction_U = 1;
+                }
+
+
+
+
+             //Get the input data from the form
+            //const squarenorthsouth = parseFloat(document.getElementById('squarenorthsouth').value);
+            //const squareeastwest = parseFloat(document.getElementById('squareeastwest').value);
+            //const northsouth_N = parseFloat(document.getElementById('northsouth_N').value);
+            //const eastwest_E = parseFloat(document.getElementById('eastwest_E').value);
+            //const eastwest_W = parseFloat(document.getElementById('eastwest_W').value);
+            //const adultsubadult_A = parseFloat(document.getElementById('adultsubadult_A').value);
+            //const adultsubadult_C = parseFloat(document.getElementById('adultsubadult_C').value);
+            //const adultsubadult_U = parseFloat(document.getElementById('adultsubadult_U').value);
+            //const ageatdeath_A = parseFloat(document.getElementById('ageatdeath_A').value);
+            //const ageatdeath_C = parseFloat(document.getElementById('ageatdeath_C').value);
+            //const ageatdeath_I = parseFloat(document.getElementById('ageatdeath_I').value);
+            //const ageatdeath_N = parseFloat(document.getElementById('ageatdeath_N').value);
+            //const ageatdeath_U = parseFloat(document.getElementById('ageatdeath_U').value);
+            //const thickness_C = parseFloat(document.getElementById('thickness_C').value);
+            //const thickness_F = parseFloat(document.getElementById('thickness_F').value);
+            //const thickness_F_M = parseFloat(document.getElementById('thickness_F_M').value);
+            //const thickness_M = parseFloat(document.getElementById('thickness_M').value);
+            //const thickness_U = parseFloat(document.getElementById('thickness_U').value);
+            //const thickness_VF = parseFloat(document.getElementById('thickness_VF').value);
+            //const angle_H = parseFloat(document.getElementById('angle_H').value);
+            //const angle_M = parseFloat(document.getElementById('angle_M').value);
+            //const angle_M_H = parseFloat(document.getElementById('angle_M_H').value);
+            //const angle_S = parseFloat(document.getElementById('angle_S').value);
+            //const angle_S_M = parseFloat(document.getElementById('angle_S_M').value);
+            //const angle_U = parseFloat(document.getElementById('angle_U').value);
+            //const manipulation_Green_yarns = parseFloat(document.getElementById('manipulation_Green_yarns').value);
+            //const manipulation_Thread_single_stitch = parseFloat(document.getElementById('manipulation_Thread_single_stitch').value);
+            //const manipulation_Warp = parseFloat(document.getElementById('manipulation_Warp').value);
+            //const manipulation_Weft = parseFloat(document.getElementById('manipulation_Weft').value);
+            //const manipulation_Weft_pile_band = parseFloat(document.getElementById('manipulation_Weft_pile_band').value);
+            //const manipulation_Weft_red = parseFloat(document.getElementById('manipulation_Weft_red').value);
+            //const manipulation_Weft_Ribs = parseFloat(document.getElementById('manipulation_Weft_Ribs').value);
+            //const manipulation_Weft_decoration = parseFloat(document.getElementById('manipulation_Weft_decoration').value);
+            //const material_Linen = parseFloat(document.getElementById('material_Linen').value);
+            //const material_Other = parseFloat(document.getElementById('material_Other').value);
+            //const material_U = parseFloat(document.getElementById('material_U').value);
+            //const material_Wool = parseFloat(document.getElementById('material_Wool').value);
+            //const ply_D = parseFloat(document.getElementById('ply_D').value);
+            //const ply_S = parseFloat(document.getElementById('ply_S').value);
+            //const ply_U = parseFloat(document.getElementById('ply_U').value);
+            //const yarnmanipulation_direction_S = parseFloat(document.getElementById('yarnmanipulation_direction_S').value);
+            //const yarnmanipulation_direction_U = parseFloat(document.getElementById('yarnmanipulation_direction_U').value);
+            //const yarnmanipulation_direction_Z = parseFloat(document.getElementById('yarnmanipulation_direction_Z').value);
+            //const yarnmanipulation_direction_Z_S = parseFloat(document.getElementById('yarnmanipulation_direction_Z_S').value);
+            
+
+            // Define the API endpoint URL
+            //const apiUrl = 'https://localhost:44370/score';
+           
+            // Send the POST request to the API endpoint
+            fetch("/score", {
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            })
+                .then(response => response.json())
+                .then(prediction => {
+                        console.log(document.querySelector("#predictionResult").textContent = String(prediction.predictedValue));
+
+
+                    //MAYBE MAKE PREDICTED VALUE LOWERCASE (just the P in predicted)
+                        document.querySelector("#predictionResult").textContent = String(prediction.predictedValue);
+
+                        // Display the output data in the textarea
+                        //const outputData = document.getElementById('outputData');
+                        //const predictedValue = prediction.predictedValue;
+                        })
+                    .catch (error => {
+                        console.error('Error performing inference:', error);
+
+                    });
+                updateInputData();
+        });
+    </script>
+</body>
