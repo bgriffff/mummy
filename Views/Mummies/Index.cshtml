@@ -7,10 +7,10 @@
 @*@model List<Mummy>*@
 @model MummyViewModel
 
-<h1>Index</h1>
+<h1>Burial Data</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Record</a>
 </p>
 
 
@@ -22,45 +22,41 @@
             <div class="col-sm">
                 <label for="location">Location:</label>
                 <input type="text" name="location" id="location" value="@ViewData["CurrentFilterLocation"]">
-            </div>
-            <div class="col-sm">
+
                 <label for="headDirection">Head Direction:</label>
                 <input type="text" name="headDirection" id="headDirection" value="@ViewData["CurrentFilterHeadDirection"]">
-            </div>
-            <div class="col-sm">
+
                 <label for="sex">Sex:</label>
                 <select type="text" name="sex" id="sex" value="@ViewData["CurrentFilterSex"]">
                     <option disabled selected value=""> -- select an option -- </option>
                     <option value="M">M (Male)</option>
                     <option value="F">F (Female)</option>
                 </select>
-            </div>
+            </div><br />
             <div class="col-sm">
                 <label for="hairColor">Hair Color:</label>
                 <input type="text" name="hairColor" id="hairColor" value="@ViewData["CurrentFilterHairColor"]">
-            </div>
-            <div class="col-sm">
+
                 <label for="burialNumber">Burial Number:</label>
                 <input type="text" name="burialNumber" id="burialNumber" value="@ViewData["CurrentFilterBurialNumber"]">
-            </div>
-            <div class="col-sm">
+
                 <label for="ageAtDeath">Age at Death:</label>
                 <select type="text" name="ageAtDeath" id="ageAtDeath" value="@ViewData["CurrentFilterAgeAtDeath"]">
                     <option disabled selected value=""> -- select an option -- </option>
                     <option value="A">A (Adult)</option>
                     <option value="C">C (Child)</option>
                 </select>
-            </div>
+            </div><br />
             <div class="col-sm">
                 <label for="structureValue">Structure:</label>
                 <input type="text" name="structureValue" id="structureValue" value="@ViewData["CurrentFilterStructureValue"]">
-            </div>
-            <label for="colorValue">Color:</label>
-            <input type="text" name="colorValue" id="colorValue" value="@ViewData["CurrentFilterColorValue"]">
-            <div class="col-sm">
+
+                <label for="colorValue">Color:</label>
+                <input type="text" name="colorValue" id="colorValue" value="@ViewData["CurrentFilterColorValue"]">
+
                 <label for="textileValue">Textile:</label>
                 <input type="text" name="textileValue" id="textileValue" value="@ViewData["CurrentFilterTextileValue"]"><br />
-            </div>
+            </div><br />
             <div class="col-sm">
                 <label for="length">Length:</label>
                 <input type="text" name="length" id="length" value="@ViewData["CurrentFilterLength"]">
@@ -80,44 +76,6 @@
             <th>Sex</th>
             <th>Length</th>
             <th>TextileValue</th>
-
-            @*<th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HeadDirection)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HairColor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BurialNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AgeAtDeath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StructureValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ColorValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TextileValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FieldNotes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Length)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>*@
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -144,44 +102,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.TextileValue)
                 </td>
-
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HeadDirection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HairColor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BurialNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AgeAtDeath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StructureValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColorValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TextileValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FieldNotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Length)
-            </td>
-            <td>
-                 @*<img src="@Html.DisplayFor(modelItem => item.Photo)" alt="Mummies" style="height:128px;">
-            </td>
-*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
