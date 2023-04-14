@@ -18,12 +18,7 @@ namespace mummy.Controllers
         {
             return View();
         }
-       
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+      
         public IActionResult BurialList()
         {
             return View();
@@ -38,7 +33,10 @@ namespace mummy.Controllers
         {
             return View();
         }
-        public IActionResult Unsupervised() 
+        public IActionResult Unsupervised()
+        {
+            return View();
+        }
 
         //Makes users sign in before accessing page
         [Authorize]

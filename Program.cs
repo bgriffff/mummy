@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Microsoft.ML.OnnxRuntime;
 using mummy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,9 @@ builder.Services.AddRazorPages();
 //        model.RootDirectory = "/CustomPages";
 //    });
 //});
+
+builder.Services.AddSingleton<InferenceSession>(serviceProvider =>
+        new InferenceSession("~/onnxstuff/mummyburial4.onnx"));
 
 var app = builder.Build();
 
