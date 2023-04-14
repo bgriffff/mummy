@@ -10,8 +10,8 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 //Database for Passwords and such
-//var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -32,8 +32,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 //Database for Mummies Info
-//var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
-var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
+var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
+//var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
 builder.Services.AddDbContext<intex2Context>(opt =>
         opt.UseNpgsql(postgresConnectionString));
 
