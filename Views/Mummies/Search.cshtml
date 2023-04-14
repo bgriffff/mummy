@@ -1,0 +1,145 @@
+﻿@using ContosoUniversity;
+@*@model IEnumerable<mummy.Models.Mummy>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@*@model List<Mummy>*@
+@*@model MummyViewModel*@
+@model PaginatedList<mummy.Models.Mummy>
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<div>
+    <h3>Filter Your Search:</h3>
+    <form method="get" action="@Url.Action("Search", "Mummies", new { area = "" })">
+        <div class="container">
+            <div class="col-sm">
+                <label for="location">Location:</label>
+                <input type="text" name="location" id="location" value="@ViewData["CurrentFilterLocation"]">
+            </div>
+            <div class="col-sm">
+                <label for="headDirection">Head Direction:</label>
+                <input type="text" name="headDirection" id="headDirection" value="@ViewData["CurrentFilterHeadDirection"]">
+            </div>
+            <div class="col-sm">
+                <label for="sex">Sex:</label>
+                <select type="text" name="sex" id="sex" value="@ViewData["CurrentFilterSex"]">
+                    <option disabled selected value=""> -- select an option -- </option>
+                    <option value="M">M (Male)</option>
+                    <option value="F">F (Female)</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="hairColor">Hair Color:</label>
+                <input type="text" name="hairColor" id="hairColor" value="@ViewData["CurrentFilterHairColor"]">
+            </div>
+            <div class="col-sm">
+                <label for="burialNumber">Burial Number:</label>
+                <input type="text" name="burialNumber" id="burialNumber" value="@ViewData["CurrentFilterBurialNumber"]">
+            </div>
+            <div class="col-sm">
+                <label for="ageAtDeath">Age at Death:</label>
+                <select type="text" name="ageAtDeath" id="ageAtDeath">
+                    <option disabled selected value=""> -- select an option -- </option>
+                    <option value="@ViewData["CurrentFilterAgeAtDeath"]">A (Adult)</option>
+                    <option value="@ViewData["CurrentFilterAgeAtDeath"]">C (Child)</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="structureValue">Structure:</label>
+                <input type="text" name="structureValue" id="structureValue" value="@ViewData["CurrentFilterStructureValue"]">
+            </div>
+            <label for="colorValue">Color:</label>
+            <input type="text" name="colorValue" id="colorValue" value="@ViewData["CurrentFilterColorValue"]">
+            <div class="col-sm">
+                <label for="textileValue">Textile:</label>
+                <input type="text" name="textileValue" id="textileValue" value="@ViewData["CurrentFilterTextileValue"]"><br />
+            </div>
+            <div class="col-sm">
+                <label for="length">Length:</label>
+                <input type="text" name="length" id="length" value="@ViewData["CurrentFilterLength"]">
+            </div><br />
+            <button class="btn btn-outline-primary btn-md" type="submit">Filter</button>
+            <a class="btn btn-outline-secondary btn-md" asp-action="Index">Clear</a>
+            
+        </div>
+    </form>
+
+    <br />
+
+    <table class="table table-bordered table-striped">
+        <thead class="text-center font-weight-bold">
+            <tr>
+                <th>HeadDirection</th>
+                <th>Location</th>
+                <th>BurialNumber</th>
+                <th>AgeAtDeath</th>
+                <th>Sex</th>
+                <th>Length</th>
+                <th>TextileValue</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HeadDirection)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BurialNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgeAtDeath)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Length)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TextileValue)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-action="Search"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Search"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>

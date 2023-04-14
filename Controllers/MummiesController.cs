@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using ContosoUniversity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,82 @@ namespace mummy.Controllers
             };
 
             return View(x);
+        }
+
+
+        public async Task<IActionResult> Search(string currentFiler, int? pageNumber, string? ColorValue, string? StructureValue, string? Sex,
+                                        string? Location, string? HeadDirection, string? AgeAtDeath,
+                                        string? TextileValue, string? HairColor, string? BurialNumber, string? Length)
+        {
+            var mummies = from m in _context.Mummies
+                          select m;
+
+            if (!String.IsNullOrEmpty(ColorValue))
+            {
+                mummies = mummies.Where(m => m.ColorValue.Contains(ColorValue));
+            }
+
+            if (!String.IsNullOrEmpty(StructureValue))
+            {
+                mummies = mummies.Where(m => m.StructureValue.Contains(StructureValue));
+            }
+
+            if (!String.IsNullOrEmpty(Sex))
+            {
+                mummies = mummies.Where(m => m.Sex.Contains(Sex));
+            }
+
+            if (!String.IsNullOrEmpty(Location))
+            {
+                mummies = mummies.Where(m => m.Location.Contains(Location));
+            }
+
+            if (!String.IsNullOrEmpty(HeadDirection))
+            {
+                mummies = mummies.Where(m => m.HeadDirection.Contains(HeadDirection));
+            }
+
+            if (!String.IsNullOrEmpty(AgeAtDeath))
+            {
+                mummies = mummies.Where(m => m.AgeAtDeath.Contains(AgeAtDeath));
+            }
+
+            if (!String.IsNullOrEmpty(TextileValue))
+            {
+                mummies = mummies.Where(m => m.TextileValue.Contains(TextileValue));
+            }
+
+            if (!String.IsNullOrEmpty(HairColor))
+            {
+                mummies = mummies.Where(m => m.HairColor.Contains(HairColor));
+            }
+
+            if (!String.IsNullOrEmpty(BurialNumber))
+            {
+                mummies = mummies.Where(m => m.BurialNumber.Contains(BurialNumber));
+            }
+
+            if (!String.IsNullOrEmpty(Length))
+            {
+                mummies = mummies.Where(m => m.Length.Contains(Length));
+            }
+
+            ViewData["CurrentFilterColorValue"] = ColorValue;
+            ViewData["CurrentFilterStructureValue"] = StructureValue;
+            ViewData["CurrentFilterSex"] = Sex;
+            ViewData["CurrentFilterLocation"] = Location;
+            ViewData["CurrentFilterHeadDirection"] = HeadDirection;
+            ViewData["CurrentFilterAgeAtDeath"] = AgeAtDeath;
+            ViewData["CurrentFilterTextileValue"] = TextileValue;
+            ViewData["CurrentFilterHairColor"] = HairColor;
+            ViewData["CurrentFilterBurialNumber"] = BurialNumber;
+            ViewData["CurrentFilterLength"] = Length;
+
+            int pageSize = 100;
+            return View(await PaginatedList<Mummy>.CreateAsync(mummies.AsNoTracking(), pageNumber ?? 1, pageSize));
+
+            //return View(await mummies.AsNoTracking().ToListAsync());
+            //return RedirectToAction(nameof(Index));
         }
 
         // GET: Mummies/Details/5
