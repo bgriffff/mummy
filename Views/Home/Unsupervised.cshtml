@@ -3,26 +3,27 @@
 *@
 @{
 }
-<h1>Unsupervised Analysis</h1>
+<h1>Unsupervised Data Analysis</h1>
 <br />
 <br />
 
-<h2>What Information We Collect</h2>
-<h4>When you use our Site, we may collect the following types of personal information:</h4>
-<img class="card__image" src="~/lib/img/ratatouille.png" alt="3D Model" />
 <p>
-    Information that you provide to us directly, such as your name and email address when you sign up for our newsletter or contact us
-    through our contact form.
-    Information that is automatically collected when you use our Site, such as your IP address, the type of device you are using to access the Site,
-    and your browsing behavior.
+    After creating the dataframe for the unsupervised model, we prepared the data for clustering. We used the WCSS also known as the Elbow Method to determine how many clusters we would use in our scatter plots. With this method, we were looking for where the line was going from a negative slope to a 0 or positive slope. Looking at the graph that it gave, our team determined that the line flattened out to 0 around 20.
 </p>
+<img class="card__image" src="~/lib/img/clusters.png" alt="Optimal Number of Clusters graph" height="600" />
+
+<br />
 <br />
 
-<h2>How We Use Your Information</h2>
-<h4>We may use your personal information for the following purposes:</h4>
-<img class="card__image" src="~/lib/img/scatterplot.png" alt="Scatter Plot" />
 <p>
-    To respond to your inquiries or requests. To send you marketing communications if you have opted-in to receive them.
-    To analyze how our Site is being used and to improve its content and functionality. To comply with our legal obligations.
+    With this knowledge, we then created our means and a cluster data frame to see which values we could visualize. Many of the values that are near the top of the df were various table ids so we selected the first three that were not ids to create out plots.
 </p>
+
+<p>
+    We have 2 visualizations that use length, depth, and the analysis type. The normal scatterplot includes the length and depth. Looking at the clusters of colors, we can deduce a couple of things. Because depth is an indicator of time, we were looking at the trends of the clusters over time. Simply looking at the cluster colors, there is a trend of darker pink/purple clusters that are grouped together in the 0.7-1.5 meter range. From this clear trend, we can assume that there was some sort of burial practice that went on during this time period that was not as common before and after. Another trend that is also displayed by this scatterplot is the amount of dots throughout time. We can deduce that burials were not extremely common early on but became more popular over time. In the range mentioned above, there is a fluctuation in the amount of burials and after the fluctuation, there are less burials found. We have two assumptions for this. Either burials became less popular over that time or the mummy closer to the surface of the earth had a higher chance of being eroded away.
+</p>
+
 <br />
+<img class="card__image" src="~/lib/img/scatterplot.png" alt="Scatter Plot" width="1000" />
+<br />
+<img class="card__image" src="~/lib/img/ratatouille.png" alt="3D Model" width="1000" />
