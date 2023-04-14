@@ -10,12 +10,14 @@ using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
 
 //Database for Passwords and such
-var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
+//This code was for adding models from aws
 //string postgresConnectionString;
 //var request = new GetParameterRequest()
 //{
@@ -27,9 +29,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //    postgresConnectionString = response.Parameter.Value;
 //}
 
+
+
 //Database for Mummies Info
-var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
-//var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
+//var postgresConnectionString = Environment.GetEnvironmentVariable("MummyConnection");
+var postgresConnectionString = builder.Configuration.GetConnectionString("MummyConnection");
 builder.Services.AddDbContext<intex2Context>(opt =>
         opt.UseNpgsql(postgresConnectionString));
 
@@ -46,10 +50,15 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 1;
 });
 
-//Old Users
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
-//builder.Services.AddControllersWithViews();
+
+//For Cookies
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.Secure = CookieSecurePolicy.Always;
+});
+
 
 builder.Services.AddRazorPages();
 
@@ -72,6 +81,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseCookiePolicy();
 
 app.UseAuthentication();
 app.UseAuthorization();
