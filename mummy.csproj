@@ -27,6 +27,10 @@
     <Content Remove="wwwroot\lib\img\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\onnxstuff\mummyburial4.onnx" />
+    <None Include="wwwroot\mummyburial4.onnx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\AnalyticsData\" />
+    <Folder Include="wwwroot\onnxstuff\" />
   </ItemGroup>
 </Project>

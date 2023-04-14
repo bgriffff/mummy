@@ -1,4 +1,4 @@
-﻿namespace mummy.Models.AnalyticsData
+﻿namespace mummy.Models
 {
     internal class Prediction
     {

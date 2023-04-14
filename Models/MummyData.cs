@@ -1,6 +1,6 @@
 ﻿using Microsoft.ML.OnnxRuntime.Tensors;
 
-namespace mummy.Models.AnalyticsData
+namespace mummy.Models
 {
     public class MummyData
     {

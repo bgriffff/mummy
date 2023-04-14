@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using mummy.Models;
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Text;
 
 namespace mummy.Controllers
 {
@@ -39,6 +41,31 @@ namespace mummy.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> BurialForm(MummyData data)
+        {
+            using (var client = new HttpClient())
+            {
+                var uri = new Uri("http://localhost:5279/score");
+
+                var json = JsonConvert.SerializeObject(data);
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync(uri, content);
+
+                var result = await response.Content.ReadAsStringAsync();
+
+                var prediction = JsonConvert.DeserializeObject<Prediction>(result);
+
+                ViewBag.Prediction = prediction;
+
+                return View();
+
+            }
+        }
+
 
         [Authorize]
         public IActionResult Unsupervised()

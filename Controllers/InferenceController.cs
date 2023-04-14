@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
-using mummy.Models.AnalyticsData;
+using mummy.Models;
 
 namespace mummy.Controllers
 {
